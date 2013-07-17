@@ -5,7 +5,7 @@ PATH
       ancestry (~> 1.2.4)
       ckeditor_rails (~> 3.6.4)
       jquery-rails (~> 2.0)
-      paperclip (~> 3.2)
+      paperclip (~> 3.4.2)
       rails (>= 3.2.5, < 3.3.0)
       sass-rails (~> 3.2.6)
       term-ansicolor
