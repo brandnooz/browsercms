@@ -49,7 +49,7 @@ module Cms
 
     def disable
       if self.class.count(:conditions => ["expires_at is null and id != ?", id]) > 0
-        self.expires_at = Time.now - 2.minutes
+        self.update_attribute :expires_at, (Time.now - 2.minutes)
       else
         false
       end
