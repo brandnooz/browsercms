@@ -8,7 +8,7 @@ module Cms
     validates_presence_of :login
     #validates_length_of       :login,    :within => 3..40
     validates_uniqueness_of :login, :case_sensitive => false
-    validates_format_of :login, :with => /\A\w[\w\.\-_@]+\z/, :message => "use only letters, numbers, and .-_@ please."
+    #validates_format_of :login, :with => /\A\w[\w\.\-_@]+\z/, :message => "use only letters, numbers, and .-_@ please."
 
     validates_presence_of :email
     #validates_length_of       :email,    :within => 6..100 #r@a.wk
