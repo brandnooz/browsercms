@@ -9,7 +9,7 @@ class TagsController < Cms::ContentBlockController
   end
   
   def show
-    redirect_to cms_tags_url
+    redirect_to cms.tags_url
   end
   
 end

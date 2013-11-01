@@ -1,8 +1,9 @@
-<% page_title "Edit '#{h(@link.name)}' Link" %>
+<% page_title "Edit '#{@link.name}' Link" %>
 <%= content_for :functions do %>
-<%= "<h1>#{ @page_title }</h1>" %> 
-<%= link_to(span_tag("list all"), cms.sitemap_path, :class => "button") %>
-<br clear="all"/>
+  <h1><%= @page_title %></h1>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", cms.sitemap_path, 'list', :class => "btn") %>
+  </div>
 <% end %>
 <%= form_for(@link) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>

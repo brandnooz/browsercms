@@ -1,4 +1,4 @@
-<% @page_title = @toolbar_title = h(@user.login) %>
+<% @page_title = @toolbar_title = @user.login %>
 
 <%= content_for :toolbar_links do %>
   <%= link_to(span_tag("List All"), users_path,
@@ -20,22 +20,22 @@
 <div class="faux_form">
   <div class="fields">
     <span class="label">Username</span>
-    <%=h @user.login %>
+    <%= @user.login %>
   </div>
   
   <div class="fields">
     <span class="label">Email</span>
-    <%=h @user.email %>
+    <%= @user.email %>
   </div>
   
   <div class="fields">
     <span class="label">First name</span>
-    <%=h @user.first_name %>
+    <%= @user.first_name %>
   </div>
   
   <div class="fields">
     <span class="label">Last name</span>
-    <%=h @user.last_name %>
+    <%= @user.last_name %>
   </div>
   
   <div class="fields">

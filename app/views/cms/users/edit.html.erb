@@ -1,12 +1,10 @@
 <% @page_title = @toolbar_title = "Edit User '#{h(@user.login)}'" %>
 
 <%= content_for :toolbar_links do %>
-  <%= link_to(span_tag("List All"), users_path,
-    :id => "list_all_button", 
-    :class => "button") %>
-  <%= link_to(span_tag("Change Password"), [:change_password, @user], 
-    :id => "change_password_button", 
-    :class => "button") %>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", users_path, 'list', :id => "list_all_button", :class => "btn") %>
+    <%= link_to("Change Password", [:change_password, @user], :id => "change_password_button", :class => "btn") %>
+  </div>
 <% end %>
 
 <%= content_for :functions do %>

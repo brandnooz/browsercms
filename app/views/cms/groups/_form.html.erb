@@ -7,15 +7,15 @@
   </style>
   <%= javascript_tag do %>
     jQuery(function($) {
-      $('#group_group_type_id').selectbox();
+      $('#group_group_type_id').selectpicker();
     });
   <% end %>
 <% end %>
 
 <%= content_for :functions do %>
-  <%= link_to(span_tag("List All"), groups_path,
-    :id => "list_all_button", 
-    :class => "button") %>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", groups_path, 'list', :id => "list_all_button", :class => "btn") %>
+  </div>
 <% end %>
 
 <%= form_for @group do |f| %>

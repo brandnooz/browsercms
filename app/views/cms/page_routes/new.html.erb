@@ -1,3 +1,7 @@
 <% @toolbar_title = page_title "New Page Route" %>
-<%= content_for :functions, link_to(span_tag("List All"), page_routes_path, :class => "button") %>
+<%= content_for :functions do %>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", page_routes_path, 'list', :class => "btn") %>
+  </div>
+<% end %>
 <%= render :partial => 'form' %>

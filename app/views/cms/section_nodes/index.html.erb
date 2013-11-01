@@ -7,13 +7,15 @@
 
 <%= content_for :functions do %>
   <h1>Sitemap</h1>
-  <%= link_to span_tag("Edit Page"), '#', :id => 'edit-button', :class => "button disabled left" %>
-  <%= link_to span_tag("Edit Properties"), '#', :id => 'properties-button', :class => "button disabled right" %>
-  <%= link_to span_tag("Add Page"), '#', :id => 'add-page-button', :class => "button disabled spacer left" %>
-  <%= link_to span_tag("Add Section"), '#', :id => 'add-section-button', :class => "button disabled middle" %>
-  <%= link_to span_tag("Add Link"), '#', :id => 'add-link-button', :class => "button disabled right" %>
-  <%= delete_button %>
-  <br clear="all" />
+  <div class="btn-toolbar">
+    <%= icon_link_to "Edit Page", '#', 'edit', :id => 'edit-button', :class => "btn disabled" %>
+    <%= icon_link_to("Edit Properties", "#", 'edit', :id => 'properties-button', :class => "btn disabled") %>
+
+    <%= white_icon_link_to "Add Page", '#', 'plus', :id => 'add-page-button', :class => "btn btn-success disabled" %>
+    <%= white_icon_link_to "Add Section", '#', 'plus', :id => 'add-section-button', :class => "btn btn-success disabled" %>
+    <%= white_icon_link_to "Add Link", '#', 'plus', :id => 'add-link-button', :class => "btn btn-success disabled" %>
+    <%= delete_button %>
+  </div>
 <% end %>
 
 <div id="sitemap">

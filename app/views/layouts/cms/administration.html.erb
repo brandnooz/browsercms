@@ -1,51 +1,28 @@
-<%= content_for :html_head do %>
-    <%= stylesheet_link_tag("cms/administration.css") %>
-    <%= stylesheet_link_tag("cms/content_library.css") %>
-<% end %>
 <%= render :partial => 'layouts/cms/head' %>
 <body>
-<div id="wrapper">
+
   <%= render_cms_toolbar(:administration) %>
-  <div id="main">
 
-    <% if current_user.able_to?(:administrate) %>
-        <div class="top_cap_menu"></div>
-        <div id="menu">
-          <%= render :partial => 'cms/shared/admin_sidebar' %>
-        </div>
-        <div id="contentwrap">
-    <% else %>
-        <div class="top_cap"></div>
-        <div id="contentwrapbig">
-    <% end %>
+  <div class="container-fluid">
+    <div class="row-fluid">
 
-    <div id="functions">
-      <h1><%= @toolbar_title %></h1>
-      <%= yield :functions %>
+      <div class="span3">
+        <% if current_user.able_to?(:administrate) %>          
+          <%= render :partial => 'cms/shared/admin_sidebar' %>           
+        <% end %>
+      </div><!-- span3 -->
 
-    </div>
-    <br clear="all"/>
+      <div class="span9">
+        <h1><%= @toolbar_title %></h1>
+        <%= yield :functions %>
 
-    <%= able_to?(:administrate) do %>
-        <div class="top_cap_content"></div>
-    <% end %>
+        <%= able_to?(:administrate) do %>
+          <%= yield %>
+        <% end %>
+      </div><!-- span9 -->
 
-    <div id="content">
-      <div class="pad">
-        <%= yield %>
-      </div>
-    </div>
-    </div>
-    <br clear="all"/>
-
-    <% if current_user.able_to?(:administrate) %>
-        <div class="bottom_cap_content"></div>
-    <% else %>
-        <div class="bottom_cap"></div>
-    <% end %>
-
-    <%= render :partial => 'layouts/cms/footer' %>
     </div>
   </div>
+  <%= render :partial => 'layouts/cms/footer' %>
 </body>
 </html>

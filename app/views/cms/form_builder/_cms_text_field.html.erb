@@ -1,12 +1,13 @@
-<div class="fields text_fields">
+<div class="control-group">
   <% if cms_options[:label] %>
-    <%= f.label method, cms_options[:label] %>
+    <%= f.label method, {:class => "control-label"}.merge(cms_options) %>
   <% else %>
-    <%= f.label method %>
-  <% end %>
-  <%= f.text_field method, options %>
-  <% if cms_options[:instructions] %>
-    <div class="instructions"><%=h cms_options[:instructions] %></div>
-    <br clear="all" /><%# Fixes issue with bad line wrapping %>
-  <% end %>
+    <%= f.label method, :class => "control-label" %>
+  <% end %>  
+  <div class="controls">
+    <%= f.text_field method, options %>
+    <% if cms_options[:instructions] %>
+      <span class="help-inline"><%= cms_options[:instructions] %></span>
+    <% end %>    
+  </div>
 </div>

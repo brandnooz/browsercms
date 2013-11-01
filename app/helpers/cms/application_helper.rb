@@ -30,16 +30,41 @@ module Cms
       text
     end
 
+    # Bootstrap helper
+    def icon_link_to label, url, icon, opt={}
+      link_to icon_label(label, icon), url, opt
+    end
+
+    def white_icon_link_to label, url, icon, opt={}
+      link_to icon_label(label, icon, 'white'), url, opt
+    end
+
+    def icon_label label, icon, color=''
+      add = color.present? ? " icon-#{color}" : ""
+      "<i class=\"icon-#{icon}#{add}\"></i> #{label}".html_safe
+    end
+
+    def action_icon(name, options={})
+      content_tag :i, '', {:class => "icon-#{name}", :alt => name.to_s.titleize}.merge(options)
+    end
+
     def action_icon_src(name)
       "cms/icons/actions/#{name}.png"
     end
 
-    def action_icon(name, options={})
+    def orig_action_icon(name, options={})
       image_tag action_icon_src(name), {:alt => name.to_s.titleize}.merge(options)
     end
 
     def status_icon(status, options={})
-      image_tag "cms/icons/status/#{status.to_s.underscore}.gif", {:alt => status.to_s.titleize}.merge(options)
+      s = (status =~ /published/) ? 'success' : 'important'
+      content_tag :span, status, {:class => "label label-#{s}"}.merge(options)
+    end
+
+    # old bcms status icon
+    def orig_status_icon(status, options={})
+      options.has_key?(:class) ? options[:class] << " tool-tip" : options[:class] = "tool-tip"
+      image_tag "cms/icons/status/#{status.to_s.underscore}.gif", {:alt => status.to_s.titleize, :title => status.to_s.titleize}.merge(options)
     end
 
     def time_on_date(time)
@@ -111,16 +136,7 @@ HTML
     end
 
     def lt_button_wrapper(content)
-      button = <<LBW
-  <div class="lt_button">
-    #{image_tag "cms/lt_button_l.gif"}
-    <div class="lt_button_content">
-      <span>#{ content }</span>
-    </div>
-    #{image_tag "cms/lt_button_r.gif", :style => "margin-right: 10px;"}
-  </div>
-LBW
-      button.html_safe
+      submit_tag 'save', :class => 'btn btn-primary'
     end
 
     def dk_button_wrapper(content)
@@ -195,16 +211,16 @@ LBW
     # @option options [Path] :path The path or URL to link_to. Takes same types at url_for or link_to. Defaults to '#' if not specified.
     # @option options [Boolean] :enabled If false, the button will be marked disabled. Default to false.
     def delete_button(options={})
-      classes = "button"
+      classes = "btn"
       classes << " disabled" if !options[:enabled]
-      classes << " delete_button"
-      classes << " http_delete confirm_with_title" if options[:title]
 
       link_to_path = options[:path] ? options[:path] : "#"
 
-      span_options = {:id => 'delete_button', :class => classes}
+      span_options = {:class => classes, :id => 'delete_button'}
+      span_options[:confirm] = options[:title] if options[:title]
+      span_options[:method] = 'delete'
       span_options[:title] = options[:title] if (!options[:title].blank? && options[:title].class == String)
-      link_to span_tag("<span class=\"delete_img\">&nbsp;</span>Delete".html_safe), link_to_path, span_options
+      link_to span_tag("<i class=\"icon-trash\"></i> Delete".html_safe), link_to_path, span_options
     end
 
     # Render a CMS styled 'Edit' button. This button will appear on tool bars, typically set apart visually from other buttons.
@@ -213,12 +229,12 @@ LBW
     # @option options [Path] :path The path or URL to link_to. Takes same types at url_for or link_to. Defaults to '#' if not specified.
     # @option options [Boolean] :enabled If false, the button will be marked disabled. Default to false.
     def edit_button(options={})
-      classes = "button"
+      classes = "btn"
       classes << " disabled" if !options[:enabled]
 
       link_to_path = options[:path] ? options[:path] : "#"
       span_options = {:id => 'edit_button', :class => classes}
-      link_to span_tag("&nbsp;Edit&nbsp;".html_safe), link_to_path, span_options
+      icon_link_to "Edit", link_to_path, 'edit', span_options
 
     end
 
@@ -226,9 +242,9 @@ LBW
     #
     # @param [Path] The path or URL to link_to. Takes same types at url_for or link_to.
     def add_button(path, options={})
-      classes = "button"
+      classes = "btn"
       span_options = {:class => classes}
-      link_to span_tag("&nbsp;Add&nbsp;".html_safe), path, span_options
+      icon_link_to "Add", path, 'plus-sign', span_options
     end
 
     private

@@ -5,8 +5,10 @@
 <% end %>
 
 <%= content_for :functions do %>
-  <%= link_to(span_tag("Clear Page Cache"), cache_path,
-    :class => "button http_delete") %>
+  <div class="btn-toolbar">
+    <%= white_icon_link_to("Clear Page Cache", cache_path, 'refresh',
+      :class => "btn btn-success http_delete") %>
+  </div>
 <% end %>
 
 <p style="font-size: larger; margin: 10px; line-height: 20px;">The CMS System caches pages which are frequently accessed by guest users to increase throughput. If data appears stale, you may manually clear this page cache.</p>

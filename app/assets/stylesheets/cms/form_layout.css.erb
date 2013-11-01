@@ -1,12 +1,10 @@
-/**
-*= require cms/selectbox
-*/
-
 form, .faux_form {
+  /*
 font-size: 10pt;
 font-family: "Trebuchet MS", Helvetica, Verdana, Arial, sans-serif;
 color:#485561;
 padding: 0 20px 20px 20px;
+*/
 }
 #functions form {
 padding: 0;
@@ -21,7 +19,7 @@ font-size: 100%;
 .fields {
 clear:both;
 padding: 10px 0;
-background: url(<%= asset_path "cms/dashed.gif" %>) repeat-x 100% 100%;
+
 }
 
 /* Fake forms */
@@ -34,7 +32,6 @@ overflow: hidden;
 padding: 0 0 12px 0;
 float: left;
 width: 140px;
-font-weight: bold;
 }
 
 /* LABELS */
@@ -49,18 +46,6 @@ width:140px;
 font-size: 12px;
 }
 
-.checkbox_group label,
-.text_fields label,
-.textarea_fields label,
-.select_fields label,
-.text_editor_fields label,
-.file_fields label,
-.checkboxes label,
-.faux_label
- {
-font-weight: bold;
-font-size: 12px;
-}
 
 .checkbox_group label {
   width: 140px; 
@@ -112,15 +97,6 @@ margin-bottom: 10px;
 margin-left: 380px;
 * margin-left: 386px;
 }
-.text_editor_fields .selectbox{
-font-size: 8pt;
-color:#485561; 
-border: 1px solid #CCCCCC;
-height: 16px;
-margin-left: 397px;
-* margin-top: 3px;
-* margin-left: 361px;
-}
 .text_editor_fields label {
 * display: block;
 * float: left;
@@ -128,7 +104,6 @@ margin-left: 397px;
 * line-height: 10pt;
 }
 .text_editor_fields .selectbox-wrapper {
-margin-left: 415px;
 color: #485561;
 font-size: 8pt;
 * margin:  28px 0px 0px -135px;
@@ -213,43 +188,6 @@ z-index:1;
 position: absolute;
 margin: 3px 0 0 397px;
 }
-
-/* BUTTONS */
-.buttons {
-padding: 10px 0 20px 0;
-margin-left: 140px;
-}
-
-div.lt_button input.submit,
-button {
-border-width: 0;
-background: #4C82C0 url(<%= asset_path "cms/lt_button_bg.gif" %>) repeat 0 0;
-height: 25px;
-color: white;
-font-weight: bold;
-font-size: 9px;
-padding: 0 0 3px 0;
-* padding: 0 0 0 0;
-margin: 0 5px;
-* margin-left: 1px;
-text-transform: uppercase;
-}
-
-div.lt_button div{
-background: #4C82C0 url(<%= asset_path "cms/lt_button_bg.gif" %>) repeat 0 0;
-float: left;
-}
-
-div.lt_button {
-padding: 0px;
-}
-
-div.lt_button img {
-float: left;
-padding: 0;
-margin: 0;
-}
-
 
 /* ERRORS */
 .fieldWithErrors input, .fieldWithErrors select, .fieldWithErrors textarea {

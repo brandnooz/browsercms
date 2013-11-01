@@ -1,8 +1,9 @@
 <% @link_title = @page_title = "Add New Link to Sitemap" %>
 <%= content_for :functions do %>
-<%= "<h1>#{ @page_title }</h1>" %> 
-<%= link_to(span_tag("list all"), cms.sitemap_path, :class => "button") %>
-<br clear="all"/>
+  <h1><%= @page_title %></h1>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", cms.sitemap_path, 'list', :class => "btn") %>
+  </div>
 <% end %>
 <%= form_for(@link) do |f| %>
   <%= hidden_field_tag :section_id, @link.section_id %>

@@ -1,10 +1,13 @@
-<% page_title "Edit Properties / '#{h(@page.name)}' Page" %>
+<% page_title "Edit Properties / '#{@page.name}' Page" %>
+
 <%= content_for :functions  do%>
-<h1><%= @page_title %></h1>
-<%= link_to(span_tag("list all"), cms.sitemap_path, :class => "button") %>
-<%= link_to(span_tag("edit content"), @page.path, :class => "button") %>
-<br clear="all" />
+  <h1><%= @page_title %></h1>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", cms.sitemap_path, 'list', :class => "btn") %>
+    <%= icon_link_to("edit content", @page.path, 'edit', :class => "btn") %>
+  </div>
 <% end %>
+
 <%= form_for(@page) do |f| %>
   <% if @other_version %>
     <%= render :partial => 'cms/shared/version_conflict_error', :locals => {:other_version => @other_version, :your_version => @page} %>

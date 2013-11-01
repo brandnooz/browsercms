@@ -1,12 +1,13 @@
-<div class="fields select_fields">
+<div class="control-group">
   <% if cms_options[:label] %>
-    <%= f.label method, cms_options[:label] %>
+    <%= f.label method, {:class => "control-label"}.merge(cms_options) %>
   <% else %>
-    <%= f.label method %>
-  <% end %>
-  <%= f.drop_down method, choices, options, html_options %>
-  <% if cms_options[:instructions] %>
-    <div class="instructions"><%=h cms_options[:instructions] %></div>
-    <br clear="all"/>  
+    <%= f.label method, :class => "control-label" %>
   <% end %>  
+  <div class="controls">
+    <%= f.drop_down method, choices, options, {:class => 'selectpicker'}.merge(html_options) %>
+    <% if cms_options[:instructions] %>
+      <span class="help-inline"><%= cms_options[:instructions] %></span>
+    <% end %>    
+  </div>
 </div>

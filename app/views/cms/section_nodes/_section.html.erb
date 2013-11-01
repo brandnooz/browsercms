@@ -9,9 +9,10 @@
     <%= render :partial => "node", :locals => {
             :node => node,
             :node_type => "section",
-            :icon => "#{section_icons(section_node, children)} #{action_icon(first_level ? :root_folder : :folder, :class => "folder")}",
+            :icon => "#{section_icons(section_node, children)} #{orig_action_icon(first_level ? :root_folder : :folder, :class => "folder")}",
+            #:icon => "#{section_icons(section_node, children)} #{icon_label('', (first_level ? 'folder-open' : 'book'))}",
             :hidden => node.hidden?,
-            :access_icon => status_icon(access_status),
+            :access_icon => orig_status_icon(access_status),
             :parent => parent
     } %>
     <% children.each do |child_section_node| %>

@@ -31,7 +31,7 @@ class Cms::FormBuilder < ActionView::Helpers::FormBuilder
 
   def tag_list(options={})
     field_name = options.delete(:name) || :tag_list
-    text_field(field_name, {:size => 50, :class => "tag-list"}.merge(options))
+    text_field(field_name, {:class => "tag-list"}.merge(options))
   end
 
   # These are the higher-level fields, 

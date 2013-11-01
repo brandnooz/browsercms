@@ -1,34 +1,34 @@
 <%= able_to? :publish_content do -%>
   <% if @block.respond_to?(:live?) && !@block.live? %>
-    <%= link_to span_tag('Publish'), block_path(@block,:publish),
-      :class => "http_put button left#{' disabled' unless (current_user.able_to_publish?(@block) && @block.publishable?)}", 
+    <%= icon_link_to 'Publish', block_path(@block,:publish), 'ok',
+      :class => "http_put btn#{' disabled' unless (current_user.able_to_publish?(@block) && @block.publishable?)}", 
       :id => "publish_button" %>
   <% else %>
-    <%= link_to span_tag('Publish'), "#", 
-      :class => "http_put button disabled left", 
+    <%= icon_link_to 'Publish', "#", 'ok',
+      :class => "http_put btn disabled", 
       :id => "publish_button" %>
   <% end %>
 <% end -%>
 
-<%= link_to span_tag('View Content'), block_path(@block),
-  :class => "button middle#{ ' off' if action_name == 'show'}", 
+<%= link_to 'View', block_path(@block),
+  :class => "btn#{ ' btn-primary' if action_name == 'show'}", 
   :id => "view_button" %>
   
-<%= link_to span_tag('Edit Content'), block_path(@block,:edit),
-  :class => "button right#{ ' off' if action_name == 'edit'}#{' disabled' unless current_user.able_to_edit?(@block)}", 
+<%= icon_link_to 'Edit', block_path(@block,:edit), 'edit',
+  :class => "btn#{ ' btn-primary' if action_name == 'edit'}#{' disabled' unless current_user.able_to_edit?(@block)}", 
   :id => "edit_button" %>
   
-<%= link_to span_tag("Add New Content"), new_block_path(@block),
-  :class => "button#{ ' off' if action_name == 'new'}", 
+<%= icon_link_to "Add", new_block_path(@block), 'plus',
+  :class => "btn#{ ' btn-primary' if action_name == 'new'}", 
   :id => "add_button" %>
 
 <% if @block.class.versioned? %>
-  <%= link_to span_tag('List Versions'), block_path(@block,:versions),
-    :class => "button#{ ' off' if action_name == 'revisions'}", 
+  <%= icon_link_to 'List Versions', block_path(@block,:versions), 'list',
+    :class => "btn#{ ' btn-primary' if action_name == 'revisions'}", 
     :id => "list_versions" %>
 <% else %>
-  <%= link_to span_tag('List Versions'), '#', 
-    :class => "button disabled", 
+  <%= icon_link_to 'List Versions', '#', 'list',
+    :class => "btn disabled", 
     :id => "list_versions" %>
 <% end %>
 

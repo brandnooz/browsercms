@@ -1,31 +1,35 @@
 <div class="pagination">
-  <div class="info">
+  <div class="links form-inline clearfix" >
+
+    <% url = URI.parse(current_page_path) %>
+    <%= form_tag url.path, :method => :get, :class => "current_page", :style => 'margin-bottom:8px' do %>
+      <% url.query.to_s.split('&').each do |p|; k, v = p.split('=') %>
+        <%= hidden_field_tag(k, CGI::unescape(v.to_s), :id => "pagination_hidden_#{k}") unless k == "page" %>
+      <% end %>
+
+      <ul id="paginator">
+        <li><%= link_to "&larr; first".html_safe, first_page_path, :id => "first_page_link" %></li>
+        <li><%= link_to "&larr; prev".html_safe, previous_page_path, :id => "previous_page_link" %></li>
+
+        <li>
+          <%= text_field_tag "page", collection.current_page, :id => "current_page_number", :size => 3, :class => 'input-small' %>
+        </li>
+
+        <li><%= link_to "next &rarr;".html_safe, next_page_path, :id => "next_page_link" %></li>
+        <li><%= link_to "last &rarr;".html_safe, last_page_path, :id => "last_page_link" %></li>
+      </ul>
+      <% end %> 
+  
+  </div>
+
+  <em>
     Displaying 
     <%= collection.offset + 1 %>
     -
     <%= collection.offset + collection.size %>
     of
     <%= collection.total_entries %>
-  </div>
-  <div class="links">
-    <%= link_to "&nbsp;".html_safe, first_page_path, :id => "first_page_link" %>
-    <%= link_to "&nbsp;".html_safe, previous_page_path, :id => "previous_page_link" %>
-    <span>
-      <% url = URI.parse(current_page_path) %>
-      <%= form_tag url.path, :method => :get, :class => "current_page" do %>
-        <% url.query.to_s.split('&').each do |p|; k, v = p.split('=') %>
-          <%= hidden_field_tag(k, CGI::unescape(v.to_s), :id => "pagination_hidden_#{k}") unless k == "page" %>
-        <% end %>
-        <%= label_tag "current_page_number", "Page" %>
-        <%= text_field_tag "page", collection.current_page, :id => "current_page_number", :size => 3 %>
-        of 
-        <strong>
-          <%= collection.total_pages %>
-        </strong>
-      <% end %> 
-    </span>
-    <%= link_to "&nbsp;".html_safe, next_page_path, :id => "next_page_link" %>
-    <%= link_to "&nbsp;".html_safe, last_page_path, :id => "last_page_link" %>
-  </div>
-  <br clear="all"/>
+    on 
+    <%= collection.total_pages %> pages
+  </em>
 </div>

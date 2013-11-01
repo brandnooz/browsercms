@@ -14,31 +14,18 @@
 
   node_type_class = node_type == "section" && node.root? ? 'root' : ''
 %>
-<div class="roundedcorners">
-  <table class="section_node <%= node_type %> <%= "movable" if current_user.able_to?(:publish_content) %>" width="100%" cellspacing="0" cellpadding="0">
-    <tr><td colspan="4" class="drop-before"></td></tr>
-    <tr<%= ' class="doubled"' if access_icon && hidden %>>
-      <td id="<%= node_type %>_<%= node.id %>" class="<%= node_type_class %> <%= node_type %> node <%= editable_class %>">
-	      <%= icon.html_safe %>
-	      <div><%= h(node.name) %></div>
-      </td>
-      <td class="sitemap_hidden divided">
-        <a href="#" class="hidden"><%= status_icon(:hidden) if hidden %><span>HIDDEN</span></a>
-      </td>
-      <td class="sitemap_access divided">
-        <%= access_icon ? access_icon : raw("&nbsp;") %>
-      </td>
-      <td class="sitemap_published_status">
-        <div>
-          <%= published_status_icon ? published_status_icon : raw("&nbsp;") %>
-          <div><%= published_status_label if published_status_label %></div>
-        </div>
-      </td>
-    </tr>
-    <tr><td colspan="4" class="drop-after"></td></tr>
-  </table>
-  <div class="stl"></div>
-  <div class="str"></div>
-  <div class="sbl"></div>
-  <div class="sbr"></div>
-</div>
+
+<table class="section_node <%= node_type %> <%= "movable" if current_user.able_to?(:publish_content) %>" width="100%" cellspacing="0" cellpadding="0">
+  <tr class="<%= 'doubled' if access_icon && hidden %>">
+    <td id="<%= node_type %>_<%= node.id %>" class="<%= node_type_class %> <%= node_type %> node <%= editable_class %> clearfix">
+      <%= icon.html_safe %>
+      <%= node.name %>
+
+      <div class="action-link pull-right clearfix">
+        <div><%= hidden ? orig_status_icon(:hidden) : raw("&nbsp;") %></div>
+        <div><%= access_icon ? access_icon : raw("&nbsp;") %></div>
+        <div><%= published_status_icon ? published_status_icon : raw("&nbsp;") %></div>
+      </div>      
+    </td>
+  </tr>
+</table>

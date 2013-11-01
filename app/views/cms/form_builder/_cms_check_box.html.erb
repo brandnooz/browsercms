@@ -1,7 +1,5 @@
-<div class="checkbox_group fields no_check_all">
-  <div class="checkbox_fields">
-    <%= f.label method, cms_options[:label] %>
-    <%= f.check_box method, options %>
-  </div>
-  <%= f.cms_instructions cms_options[:instructions] %>
+<div class="checkbox">
+  <%= f.check_box( method, options ) %>
+  <%= f.label method, cms_options[:label] %>
+  <%= f.cms_instructions( cms_options[:instructions] ) if cms_options[:instructions] %>
 </div>

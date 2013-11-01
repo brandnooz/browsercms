@@ -5,7 +5,7 @@
   <% Cms::Section.all(:order => "path").each do |s|%>
   <div class="checkbox_fields">
     <%= check_box_tag "group[section_ids][]", s.id, @group.sections.include?(s), :id => "section_ids_#{s.id}", :class => "section_ids" %>
-    <label for= "section_ids_<%= s.id %>" style="width: 400px; padding-top: 0; #padding-top: 4px;"><%=h s.name %><span style="padding-top: 0; font-weight: lighter; display: inline; float: none;">(Path: <%=h s.path %>)</span></label>
+    <label for= "section_ids_<%= s.id %>" style="width: 400px; padding-top: 0; #padding-top: 4px;"><%= s.name %><span style="padding-top: 0; font-weight: lighter; display: inline; float: none;">(Path: <%= s.path %>)</span></label>
   </div>
   <% end %>
   <div class="instructions">What sections should group members be allowed to <span id="section-action"><%= @group.cms_access? ? 'edit' : 'view' %></span>?</div>

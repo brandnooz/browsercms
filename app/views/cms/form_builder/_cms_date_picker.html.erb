@@ -1,12 +1,18 @@
-<div class="fields text_fields">
+<div class="control-group">
   <% if cms_options[:label] %>
-    <%= f.label method, cms_options[:label] %>
+    <%= f.label method, {:class => "control-label"}.merge(cms_options) %>
   <% else %>
-    <%= f.label method %>
-  <% end %>
-  <%= f.date_picker method, options %>
-  <% if cms_options[:instructions] %>
-    <div class="instructions"><%=h cms_options[:instructions] %></div>
-    <br clear="all"/>  
+    <%= f.label method, :class => "control-label" %>
   <% end %>  
+  <div class="controls">
+    <div class="input-append date datetimepicker">
+      <%= f.text_field method, options.merge(:data => {:format => "yyyy-MM-dd"}) %>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>    
+    </div>
+    <% if cms_options[:instructions] %>
+      <span class="help-inline"><%= cms_options[:instructions] %></span>
+    <% end %>    
+  </div>
 </div>

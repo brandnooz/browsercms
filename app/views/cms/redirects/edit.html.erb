@@ -1,3 +1,5 @@
 <% @page_title = @toolbar_title = "Edit Redirect" %>
-<%= content_for :functions, link_to(span_tag("List All"), redirects_path, :class => "button") %>
+<div class="btn-toolbar">
+  <%= icon_link_to("List All", redirects_path, 'list', :class => "btn") %>
+</div>
 <%= render :partial => 'form' %>

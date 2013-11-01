@@ -14,7 +14,9 @@
 <% end %>
 
 <%= content_for :functions do %>
-  <%= link_to span_tag("List All"), cms_email_messages_path, :class => "button" %>
+  <div class="btn-toolbar">
+    <%= icon_link_to("List All", cms_email_messages_path, 'list', :class => "btn") %>
+  </div>
 <% end %>
 
 <% @page_title = @toolbar_title = "Email Message '#{@message.subject}'" %>
@@ -25,33 +27,33 @@
 <% unless @message.content_type.blank? %>
   <div class="field">
     <div class="label">Content-Type:</div> 
-    <div class="value"><%=h @message.content_type %></div>  
+    <div class="value"><%= @message.content_type %></div>  
   </div>
 <% end %>
 <div class="field">
   <div class="label">From:</div> 
-  <div class="value"><%=h @message.sender %></div>
+  <div class="value"><%= @message.sender %></div>
 </div>
 <div class="field">
   <div class="label">To:</div> 
-  <div class="value"><%=h @message.recipients %></div>
+  <div class="value"><%= @message.recipients %></div>
 </div>
 <% unless @message.cc.blank? %>
   <div class="field">
     <div class="label">CC:</div> 
-    <div class="value"><%=h @message.cc %></div>
+    <div class="value"><%= @message.cc %></div>
   </div>
 <% end %>
 <% unless @message.bcc.blank? %>
   <div class="field">
     <div class="label">BCC:</div> 
-    <div class="value"><%=h @message.bcc %></div>
+    <div class="value"><%= @message.bcc %></div>
   </div>
 <% end %>
 <div class="field">
   <div class="label">Subject:</div> 
-  <div class="value"><%=h @message.subject %></div>
+  <div class="value"><%= @message.subject %></div>
 </div>
 <div class="field">
-  <%=h @message.body %>
+  <%= @message.body %>
 </div>

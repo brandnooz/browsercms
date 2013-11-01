@@ -1,0 +1,19 @@
+<div class="modal hide fade" role="dialog">
+  
+  <div class="modal-header">
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button"> × </button>
+    <h3 id="myModalLabel"><%= yield( :modal_header ) %></h3>
+  </div>
+
+  <div class="modal-body">
+    <%= yield( :modal_body ) %>
+  </div>
+
+  <% footer = yield( :modal_footer ) %>
+  <% unless footer.blank? %>
+    <div class="modal-footer">
+      <button class="btn" aria-hidden="true" data-dismiss="modal"> Close </button>
+      <%= footer.html_safe %>
+    </div>
+  <% end %>
+</div>

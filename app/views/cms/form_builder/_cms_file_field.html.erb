@@ -9,13 +9,15 @@
 <%= f.fields_for :attachments do |a| %>
     <% if a.object.attachment_name == method.to_s %>
         <%= a.hidden_field :attachment_name, :value => method.to_s %>
-        <div class="fields file_fields">
-            <%= a.cms_label :data, cms_options[:label] %>
-            <div id="<%= object_name %>_<%= method %>_div" class="file_inputs">
-                <%= a.file_field :data, options.merge('data-purpose'=>"cms_file_field") %>
+        <div class="control-group">
+            <%= a.cms_label :data, {:class => "control-label", :label => cms_options[:label]} %>
+            <div id="<%= object_name %>_<%= method %>_div" class="file_inputs controls">
+              <%= a.file_field :data, options.merge('data-purpose'=>"cms_file_field") %>
+              <span class="help-inline"><%= cms_options[:instructions] %></span>
             </div>
-            <%= a.cms_instructions cms_options[:instructions] %>
+            
         </div>
+        
         <% if options[:edit_section] %>
             <%= render :partial=>'cms/file_blocks/section_selector' %>
             <%= a.cms_drop_down :section_id, @sections.map {|s| [s.full_path, s.id]}, {:label => "Section"}, {'data-purpose'=>"section_selector"} %>

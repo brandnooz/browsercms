@@ -37,7 +37,7 @@ module Cms
         def tag_list
           @tag_list ||= tags.reload.map(&:name).join(self.class.tag_separator)
         end
-        def tag_list=(tag_names)
+        def tag_list=(tag_names)        
           changed_attributes["tag_list"] = tag_list unless @tag_list == tag_names
           @tag_list = tag_names
         end

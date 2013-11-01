@@ -16,16 +16,11 @@
   <%= yield :html_head %>
   </head>
   <body>
-
-    <div id="login_panel">
-      <%= image_tag "cms/login_top.gif" %><br />
-      <div id="form_panel">
-	<% flash_class, flash_message = flash.to_a.first %>
-        <% if flash_message %><p><%= flash_message %></p><% end %>
-	<%= yield %>
-      </div>
-      <%= image_tag "cms/login_bottom.jpg", :style => "padding: 0; margin: 0;" %>
-      <%= render :partial => "layouts/cms/footer" %>
+    <div class="container">
+    	<% flash_class, flash_message = flash.to_a.first %>
+      <% if flash_message %><p><%= flash_message %></p><% end %>
+    	<%= yield %>
     </div>
+    <%= render :partial => "layouts/cms/footer" %>
   </body>
 </html>

@@ -1,18 +1,9 @@
-ul.tag-list {
-  position: absolute;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  border: 1px solid #C6C6C6;
-  border-bottom: none;
+.tag-label-list .label {
+  display: block; float: left; width: 100px; overflow: hidden;
+  margin: 3px 3px; text-align: center;
 }
-ul.tag-list li {
-  margin: 0;
-  padding: 5px;
+
+.tag-label-list .label:hover {
+  background-color: #F89406;
   cursor: pointer;
-  border-bottom: 1px dotted #8D8E90;
-  background: #FFF;
-}
-ul.tag-list li.selected {
-  background-color: #EAF2FB;
 }

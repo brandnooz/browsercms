@@ -68,7 +68,7 @@ module Cms
     # Add the code to render the CMS toolbar.
     def cms_toolbar
       toolbar = <<HTML
-<iframe src="#{cms.toolbar_path(:page_id => @page.id, :page_version => @page.version, :mode => @mode, :page_toolbar => @show_page_toolbar ? 1 : 0) }" width="100%" height="#{@show_page_toolbar ? 159 : 100 }px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" name="cms_toolbar"></iframe>
+<iframe src="#{cms.toolbar_path(:page_id => @page.id, :page_version => @page.version, :mode => @mode, :page_toolbar => @show_page_toolbar ? 1 : 0) }" width="100%" height="#{@show_page_toolbar ? 144 : 100 }px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" name="cms_toolbar" style="border-bottom: 1px solid #D4D4D4"></iframe>
 HTML
       toolbar.html_safe if @show_toolbar
     end

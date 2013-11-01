@@ -34,7 +34,7 @@
 
 <div class="cms_error">
   <h2>Message</h2>
-  <pre><%=h exception.message %></pre>
+  <pre><%= exception.message %></pre>
   <h2>Stacktrace</h2>
-  <pre><%=h exception.backtrace.join("\n") %></pre>
+  <pre><%= exception.backtrace.join("\n") %></pre>
 </div>

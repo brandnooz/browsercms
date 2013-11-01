@@ -1,7 +1,7 @@
 <% page_title "Content Library / List of Versions" %>
 <% @toolbar_title = "List Versions / '#{@block.name}' #{content_type.display_name}" %>
 <%= content_for :html_head do %>
-<%= stylesheet_link_tag("cms/content_library") %>
+
   <%= javascript_tag do %>
     jQuery(function($){
       var collectionName = '<%= content_type.content_block_type %>'
@@ -33,58 +33,41 @@
 
 <%= content_for :functions do %>
   <%= render :partial => 'cms/blocks/toolbar' %>
-  <%= link_to span_tag("Revert"), "#", :id => "revert_button", :class => "http_put button disabled"  %>
+  <%= link_to span_tag("Revert"), "#", :id => "revert_button", :class => "http_put btn disabled"  %>
 <% end %>
 
-<div class="roundedcorners">
-  <table id="blocks" class="data">
+  <table id="blocks" class="data table table-condensed table-hover">
     <thead>
       <tr>
-        <th colspan="2" class="first"><div class="dividers">Version</div></th>
-        <th>
-          <div class="dividers">Comment</div>
+        <th>Version</th>
+        <th>Comment</th>
+        <th>Date</div>
         </th>
-        <th>
-          <div class="dividers">Date</div>
-        </th>
-        <th class="last" colspan="2">
-          <div class="dividers">Editor</div>
-        </th>
+        <th>Editor</th>
       </tr>
     </thead>
     <tbody>
       <% @block.versions.all(:order => "version desc").each_with_index do |r, i| %>
         <tr id="<%= content_type.content_block_type.singularize %>_<%= r.version %>">
-          <td class="first"></td>
           <td>
-            <div class="dividers">
+            <div>
               <%= "v. #{r.version}" %>
               <%= '(LIVE)' if @block.version == r.version %>
               <%= '<span class="current">(CURRENT)</span>'.html_safe if i == 0 %>
             </div>
           </td>
           <td>
-            <div class="dividers"><%=  r.version_comment %></div>
+            <div><%=  r.version_comment %></div>
           </td>
           <td>
-            <div class="dividers">
+            <div>
               <%= r.created_at.strftime("%b %d, %Y %I:%M %p") if r.created_at %>
             </div>
           </td>
           <td>
             <div><%= r.updated_by.login if r.updated_by %></div>
           </td>
-          <td class="last"></td>
         </tr>
       <% end %>
-      <tr>
-        <td colspan="8" class="buffer"></td>
-      </tr>
     </tbody>
   </table>
-  <div class="tl"></div>
-  <div class="tr"></div>
-  <div class="bl"></div>
-  <div class="br"></div>
-</div>
-

@@ -10,16 +10,14 @@ module Cms
     end
 
     def section_icons(section_node, children=[])
-      folder_style = ""
-      expander_image = "expand.png"
+      expander_image = "plus-sign"
       if top_level_section?(section_node)
-        folder_style = " large"
-        expander_image = "gray_expand.png"
+        expander_icon = "plus-sign"
       end
       if children.empty?
-        image_tag("cms/sitemap/no_contents.png", :class => "no_folder_toggle#{folder_style}")
+        content_tag(:i, '', :class => "icon-#{expander_icon} no_folder_toggle")
       else
-        image_tag("cms/sitemap/#{expander_image}", :class => "folder_toggle#{folder_style}")
+        content_tag(:i, '', :class => "icon-#{expander_icon} folder_toggle")
       end
     end
 

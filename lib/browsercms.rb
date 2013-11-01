@@ -12,10 +12,9 @@ ActiveRecord::Base.send(:include, ActsAsList)
 require 'cms/acts'
 require 'cms/authentication'
 require 'cms/domain_support'
-require 'cms/authoring'
-require 'cms/date_picker'
 require 'cms/content_rendering_support'
 require 'cms/mobile_aware'
+require 'cms/date_picker'
 require 'cms/attachments/configuration'
 require 'cms/default_accessible'
 

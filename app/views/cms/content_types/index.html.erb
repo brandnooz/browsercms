@@ -1,10 +1,10 @@
 <% page_title "Select Content Type" %>
-<%= content_for :functions, "<h1>#{ @page_title }</h1>" %>
+<%= content_for :functions, "<h1>#{ @page_title }</h1>".html_safe %>
 <%= content_for :html_head, stylesheet_link_tag('cms/content_types') %>
 <ul id="content_types">
   <% Cms::ContentType.connectable.all.each_with_index do |type, i| %>
     <li>
-      <%= link_to h(type.display_name), cms_new_path_for(type, 
+      <%= link_to type.display_name, cms_new_path_for(type, 
         "#{type.model_class_form_name}[connect_to_page_id]" => params[:connect_to_page_id], 
         "#{type.model_class_form_name}[connect_to_container]" => params[:connect_to_container]
       ) %>

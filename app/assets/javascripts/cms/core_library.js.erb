@@ -1,9 +1,38 @@
+function cms_init_plugins() {
+    // Date time picker
+    $('.datetimepicker').datetimepicker();
+}
+
 //
 // Defines Core BrowserCMS functions used throughout the application.
 //
 //= require jquery
 //
 jQuery(function ($) {
+  
+
+
+    // ===========================================
+    // --- Modal
+    // ===========================================
+
+    var modal_el = $('#modal_container');
+
+    // --- Remote Modal
+    $('.remote-modal').click(function(e) {
+        e.preventDefault();
+        modal_el.load( $(this).attr('href'), function() {
+            $('.modal').modal({show: true});    
+            //init_modal();
+            cms_init_plugins();
+        }); 
+    });    
+    
+
+    cms_init_plugins();
+
+    // fancy select box
+    //$('.selectpicker').selectpicker();
 
     //It would be cool if these were added to the real jQuery
     //You can call this a few ways:
@@ -99,13 +128,6 @@ jQuery(function ($) {
     $('#message.notice').parent().show().animate({opacity:1.0}, 3000).fadeOut("normal")
     $('#message.error').parent().show().animate({opacity:1.0}, 3000).fadeOut("normal")
 
-});
-
-// Automatically enable date_picker controls
-$(function () {
-    if ($.datepicker) {
-        $('input.date_picker').datepicker({ changeFirstDay:false, changeMonth:true, changeYear:true, closeText:'', showButtonPanel:true, dateFormat:'<%= Cms::DatePicker.jquery_format %>' });
-    }
 });
 
 // UI Enhancement to suggest paths for uploaded files

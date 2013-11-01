@@ -13,16 +13,14 @@ jQuery(function($) {
     }
 
     var addHoverToSectionNodes = function() {
-        $('#sitemap div.roundedcorners').hover(
-                function() {
-                    $(this).find('table.section_node').addClass('hover');
-                    $(this).addClass('over')
-                },
-                function() {
-                    $(this).find('table.section_node').removeClass('hover');
-                    $(this).removeClass('over')
-                }
-                )
+        $('#sitemap .section_node').hover(
+            function() {
+                $(this).addClass('hover').addClass('over');
+            },
+            function() {
+                $(this).removeClass('hover').removeClass('over');
+            }
+            )
     }
 
     var disableButtons = function() {
@@ -130,14 +128,14 @@ jQuery(function($) {
     }
 
     var makeExpandable = function(dest) {
-        var dest_toggle = dest.find('td.node:first img:first');
+        var dest_toggle = dest.find('td.node:first i:first');
         dest_toggle.removeClass('no_folder_toggle');
         dest_toggle.addClass('folder_toggle');
         dest_toggle.click(toggleSectionOnClick);
         if (dest_toggle.hasClass('large')) {
-            dest_toggle.attr('src', '<%= asset_path "cms/sitemap/gray_contract.png" %>');
+            dest_toggle.removeClass('icon-plus-sign').addClass('icon-minus-sign');
         } else {
-            dest_toggle.attr('src', '<%= asset_path "cms/sitemap/contract.png" %>');
+            dest_toggle.removeClass('icon-plus-sign').addClass('icon-minus-sign');
         }
     }
 
@@ -366,11 +364,11 @@ jQuery(function($) {
 
         $(sectionNode).addClass('open')
         $(sectionNode).find('li:first > ul').show();
-        var img = $(sectionNode).find('li:first table:first img.folder_toggle');
-        if (img.hasClass('large')) {
-            img.attr('src', '<%= asset_path "cms/sitemap/gray_contract.png" %>').addClass("folder-open")
+        var icon = $(sectionNode).find('li:first table:first i.folder_toggle');
+        if (icon.hasClass('large')) {
+            icon.removeClass('icon-plus-sign').addClass('icon-minus-sign');
         } else {
-            img.attr('src', '<%= asset_path "cms/sitemap/contract.png" %>').addClass("folder-open")
+            icon.removeClass('icon-plus-sign').addClass('icon-minus-sign');
         }
     }
 
@@ -383,16 +381,16 @@ jQuery(function($) {
         //close this
         $(sectionNode).removeClass('open')
         $(sectionNode).find('li:first > ul').hide()
-        var img = $(sectionNode).find('li:first table:first img.folder_toggle');
-        if (img.hasClass('large')) {
-            img.attr('src', '<%= asset_path "cms/sitemap/gray_expand.png" %>').removeClass("folder-open")
+        var icon = $(sectionNode).find('li:first table:first i.folder_toggle');
+        if (icon.hasClass('large')) {
+            icon.removeClass('icon-minus-sign').addClass('icon-plus-sign');
         } else {
-            img.attr('src', '<%= asset_path "cms/sitemap/expand.png" %>').removeClass("folder-open")
+            icon.removeClass('icon-minus-sign').addClass('icon-plus-sign');
         }
     }
 
     var sectionNodeIsOpen = function(sectionNode) {
-        return $(sectionNode).find('li:first table:first img.folder-open').length
+        return $(sectionNode).find('li:first table:first i.icon-minus-sign').length
     }
 
     var nodeOnClick = function() {
@@ -432,7 +430,7 @@ jQuery(function($) {
     }
 
     var addToggleSectionOnClick = function() {
-        $('#sitemap img.folder_toggle').click(toggleSectionOnClick);
+        $('#sitemap i.folder_toggle').click(toggleSectionOnClick);
     }
 
     //Whenever you open a section, a cookie is updated so that next time you view the sitemap
@@ -442,7 +440,7 @@ jQuery(function($) {
         var selectedSectionSelector = '.root table:first'
         if (openSectionNodeIds) {
             $.each(openSectionNodeIds, function(i, e) {
-                $('#section_node_' + e + ' table:first img.folder_toggle').click()
+                $('#section_node_' + e + ' table:first i.folder_toggle').click()
             })
             selectedSectionSelector = '#section_node_' + openSectionNodeIds[openSectionNodeIds.length - 1] + ' table:first'
         }

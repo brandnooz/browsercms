@@ -1,7 +1,7 @@
 <% page_title "Content Library / View Usages" %>
 <% @toolbar_title = "Pages Using #{content_type.display_name} '#{ @block.name }'".html_safe %>
 <%= content_for :html_head do %>
-  <%= stylesheet_link_tag("cms/content_library") %>
+  
   <%= javascript_tag do %>
     jQuery(function($) {
       $('#functions .button').addClass('disabled').attr('href','#');
@@ -14,31 +14,20 @@
 <% end %>
 
 <%= render :partial => 'cms/blocks/toolbar' %>
-<div class="roundedcorners">
-  <table id="blocks" class="data">
+  <table id="blocks" class="data table table-condensed">
   <thead>
     <tr>
-      <th colspan="2" class="first"><div class="dividers">Page Name</div></th>
-      <th><div class="dividers">Path</div></th>
-      <th colspan="2" class="last"><div class="dividers">Page Status</div></th>
+      <th>Page Name</th>
+      <th>Path</th>
+      <th>Page Status</th>
     </tr>
   </thead>
   <% @pages.each do |page| %>
     <% status = page.archived? ? :archived : page.status %>    
     <tr>
-      <td class="first"></td>
-      <td class="page_name"><%=  page.name %></td>
-      <td class="path"><%=  link_to page.path, page.path %></td>
-      <td class="block_status"><%= status_icon(status) %> <div><%= status %></div></td>
-      <td class="last"></td>
+      <td><%=  page.name %></td>
+      <td><%=  link_to page.path, page.path %></td>
+      <td><%= status_icon(status) %></td>
     </tr>
   <% end %>
-      <tr>
-        <td colspan="8" class="buffer"></td>
-      </tr>
   </table>
-  <div class="tl"></div>
-  <div class="tr"></div>
-  <div class="bl"></div>
-  <div class="br"></div>
-</div>

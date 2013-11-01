@@ -1,6 +1,7 @@
 module Cms
 class PageRoutesController < Cms::BaseController
   
+  before_filter :set_menu_section
   before_filter :load_page_route, :only => [:show, :edit, :update, :destroy]
   layout 'cms/administration'
   
@@ -39,8 +40,13 @@ class PageRoutesController < Cms::BaseController
   end
   
   protected
+
+    def set_menu_section
+      @menu_section = 'page_routes'
+    end
+
     def load_page_route
-      @page_route = PageRoute.find(params[:id])
+      @page_route = PageRoute.find(params[:id])      
     end
   
 end
