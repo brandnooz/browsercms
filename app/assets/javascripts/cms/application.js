@@ -15,4 +15,8 @@
 
 $(document).ready(function() {
   $('.tool-tip').tooltip();
+
+  $('#submit_search').click(function() {
+    $('#search_form').submit();
+  })
 });

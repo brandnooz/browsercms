@@ -8,14 +8,14 @@
 
       <div class="span3">
 
-        <div class="well sidebar-nav accordion" id="accordion2">
+        <div class="sidebar-nav accordion" id="accordion2">
 
             <% Cms::ContentTypeGroup.menu_list.each do |group| %>
               
               <% if group.content_types.blank? %>
                 <%= link_to group.name, "#" %>
               <% else %>
-                <div class="accordion-heading">
+                <div class="accordion-heading sb-item">
                   <%= icon_link_to group.name, "#collapse_#{group.id}", "chevron-right", :class => "accordion-toggle", 
                     :data => {'toggle' => "collapse", 'parent' => "#accordion2"} %>
                 </div>
@@ -27,7 +27,6 @@
                         <%= link_to type.display_name, cms_index_path_for(type) %>
                       <% end %>
                     <% end -%>
-                    <li class="divider"></li>
                   </ul>
                 </div>
               <% end -%>

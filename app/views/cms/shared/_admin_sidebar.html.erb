@@ -1,8 +1,8 @@
 <%
 	# Using cms. prefix on the links here so this view can be used by models from engines.
 %>
-<div class="well sidebar-nav accordion" id="accordion2">
-  <div class="accordion-heading">
+<div class="sidebar-nav accordion" id="accordion2">
+  <div class="accordion-heading sb-item">
     <%= icon_link_to 'Users', "#collapse_users", "chevron-right", :class => "accordion-toggle", 
         :data => {'toggle' => "collapse", 'parent' => "#accordion2"} %>
   </div>
@@ -13,7 +13,7 @@
     </ul>
   </div>
 
-  <div class="accordion-heading">
+  <div class="accordion-heading sb-item">
     <%= icon_link_to 'Templates', "#collapse_templates", "chevron-right", :class => "accordion-toggle", 
         :data => {'toggle' => "collapse", 'parent' => "#accordion2"} %>    
   </div>
@@ -25,7 +25,7 @@
     </ul>
   </div>
 
-  <div class="accordion-heading">
+  <div class="accordion-heading sb-item">
     <%= icon_link_to 'Tool', "#collapse_tools", "chevron-right", :class => "accordion-toggle", 
         :data => {'toggle' => "collapse", 'parent' => "#accordion2"} %>    
   </div>

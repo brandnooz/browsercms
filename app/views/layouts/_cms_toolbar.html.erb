@@ -15,7 +15,7 @@
         <li class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Account <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li id="user_info"><a href="<%= current_user.able_to?(:administrate) ? cms.edit_user_path(current_user) : cms.user_path(current_user) %>" target="_top"><i class="icon-user icon"></i> <%= current_user.full_name %></a></li>    
+            <li id="user_info"><a href="<%= current_user.able_to?(:administrate) ? cms.edit_user_path(current_user) : cms.user_path(current_user) %>" target="_top"><i class="icon-user icon"></i> <%= current_user.login %></a></li>    
             <li><%= icon_link_to "Logout", cms.logout_path, 'off', :class => "http_delete", :target => "_top" %></li>
           </ul>
         </li>

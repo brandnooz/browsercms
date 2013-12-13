@@ -40,9 +40,9 @@
           <div class="visual_editor_label">Visual Editor:</div>
           <div class="visual_editor_toggle_container">
             <% if @mode == "edit" %>
-              <%= link_to 'Turn off', url_with_mode(request.referrer, "view"), :target => "_top", :class => 'btn btn-warning btn-small' %>
+              <%= white_icon_link_to 'Turn off', url_with_mode(request.referrer, "view"), 'eye-close', :target => "_top", :class => 'btn btn-warning btn-small' %>
             <% else %>
-              <%= link_to 'Turn on', url_with_mode(request.referrer, "edit"), :target => "_top", :class => 'btn btn-primary btn-small',
+              <%= white_icon_link_to 'Turn on', url_with_mode(request.referrer, "edit"), 'eye-open', :target => "_top", :class => 'btn btn-primary btn-small',
                 :confirm => ("You don\'t have permission to edit this page" unless current_user.able_to_edit?(@page)) %>
             <% end %>
           </div>
