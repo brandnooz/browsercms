@@ -39,9 +39,9 @@ module Cms
       link_to icon_label(label, icon, 'white'), url, opt
     end
 
-    def icon_label label, icon, color=''
+    def icon_label label, icon, color='', opt={}
       add = color.present? ? " icon-#{color}" : ""
-      "<i class=\"icon-#{icon}#{add}\"></i> #{label}".html_safe
+      "#{content_tag( :i, {:class => "icon-#{icon}#{add}"}.merge( opt ))} #{label}".html_safe
     end
 
     def action_icon(name, options={})
