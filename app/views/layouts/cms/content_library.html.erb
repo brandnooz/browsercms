@@ -47,15 +47,13 @@
               <%= icon_link_to 'search', '#', 'search', :class => 'btn', :id => 'submit_search' %>
             </div>
 
-            <!--
             <% if content_type.name == "Cms::HtmlBlock" -%>
               <label class="checkbox">
                 <%= check_box_tag "search[include_body]", true, (params[:search] ? params[:search][:include_body] : false) %> include body?
               </label>            
             <% elsif %w[Cms::FileBlock Cms::ImageBlock].include?(content_type.name) %>
-              <%= select_tag 'section_id', searchable_sections(params[:section_id]) %>
+              <%= select_tag 'section_id', searchable_sections(params[:section_id]), :style => "width: 125px"  %>
             <% end -%>
-            -->
           <% end -%>
         </div><!-- END navbar -->
 

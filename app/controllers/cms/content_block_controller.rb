@@ -126,6 +126,7 @@ module Cms
         options[:include] = {:attachments => :section_node}
         options[:conditions] = ["#{Namespacing.prefix("section_nodes")}.ancestry = ?", Section.find(params[:section_id]).ancestry_path]
       end
+
       options[:page] = params[:page]
       options[:order] = model_class.default_order if model_class.respond_to?(:default_order)
       options[:order] = params[:order] unless params[:order].blank?

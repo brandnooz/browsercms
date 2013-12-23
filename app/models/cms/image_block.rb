@@ -1,7 +1,8 @@
 module Cms
   class ImageBlock < Cms::AbstractFileBlock
 
-    acts_as_content_block :taggable => true
+    acts_as_content_block :taggable => true, :searchable => {:searchable_columns => ['cms_attachments.data_file_path', :name]}
+
     has_attachment :file, :styles => {:thumb => "80x80"}
     validates_attachment_presence :file, :message => "You must upload a file"
 

@@ -19,10 +19,11 @@ module Cms
             conditions = []
             unless term.blank?
               searchable_columns.each do |c|
+                tbl_name = (c =~ /\./) ? c : "#{table_name}.#{c}"
                 if conditions.empty?
-                  conditions = ["#{table_name}.#{c} like ?"]
+                  conditions = ["#{tbl_name} like ?"]
                 else
-                  conditions.first << "or #{table_name}.#{c} like ?"
+                  conditions.first << "or #{tbl_name} like ?"
                 end
                 conditions << "%#{term}%"
               end

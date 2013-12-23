@@ -41,7 +41,7 @@ module Cms
 
     def icon_label label, icon, color='', opt={}
       add = color.present? ? " icon-#{color}" : ""
-      "#{content_tag( :i, {:class => "icon-#{icon}#{add}"}.merge( opt ))} #{label}".html_safe
+      "#{content_tag( :i, '', {:class => "icon-#{icon}#{add}"}.merge( opt ))} #{label}".html_safe
     end
 
     def action_icon(name, options={})

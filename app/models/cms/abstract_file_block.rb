@@ -6,10 +6,18 @@ module Cms
 
     validates_presence_of :name
 
+    default_scope joins(:attachments)
     scope :by_section, lambda { |section| {
         :include => {:attachments => :section_node},
         :conditions => ["#{SectionNode.table_name}.ancestry = ?", section.node.ancestry_path]}
     }
+
+    def self.columns_for_index
+     [{:label => "Name", :method => :name, :order => "name"},
+      {:label => "Path", :method => :path, :order => "url"},
+      {:label => "Size", :method => :file_size, :order => "file_size"},
+      {:label => "Updated On", :method => :updated_on_string, :order => "updated_at"}]
+    end    
 
     # Return the parent section for this block.
     # @return [Cms::Section]

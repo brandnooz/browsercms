@@ -17,10 +17,11 @@ module Cms
       columns << "content" if include_body
       unless term.blank?
         columns.each do |c|
+          tbl_name = (c =~ /\./) ? c : "#{table_name}.#{c}"
           if conditions.empty?
-            conditions = ["lower(#{table_name}.#{c}) like lower(?)"]
+            conditions = ["lower(#{tbl_name}) like lower(?)"]
           else
-            conditions.first << "or lower(#{table_name}.#{c}) like (?)"
+            conditions.first << "or lower(#{tbl_name}) like (?)"
           end
           conditions << "%#{term}%"
         end
