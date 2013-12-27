@@ -6,7 +6,7 @@ module Cms
 
     validates_presence_of :name
 
-    default_scope joins(:attachments)
+    #default_scope joins(:'cms_attachments')
     scope :by_section, lambda { |section| {
         :include => {:attachments => :section_node},
         :conditions => ["#{SectionNode.table_name}.ancestry = ?", section.node.ancestry_path]}
