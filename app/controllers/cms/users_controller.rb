@@ -20,8 +20,8 @@ class UsersController < Cms::ResourceController
     end
 
     unless params[:key_word].blank?
-      query << %w(login email first_name last_name).collect { |f| "lower(#{f}) LIKE lower(?)" }.join(" OR ")
-      4.times { conditions << "%#{params[:key_word]}%" }
+      query << %w(login email first_name last_name id).collect { |f| "lower(#{f}) LIKE lower(?)" }.join(" OR ")
+      5.times { conditions << "%#{params[:key_word]}%" }
     end
     
     unless params[:group_id].to_i == 0
