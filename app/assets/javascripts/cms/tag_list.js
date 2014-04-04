@@ -28,7 +28,8 @@
   }
 
   $(document).ready(function() {
-    tags = $( tag_el ).val().split(' ');
+    if ($( tag_el ).length > 0)
+      tags = $( tag_el ).val().split(' ');
 
     $('.tag-label-list .label').each(function() {
       if (tag_exists( $(this).attr('rel') ))
