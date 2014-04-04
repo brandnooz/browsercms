@@ -10,6 +10,7 @@
 //= require cms/attachment_manager
 //= require datetimepicker/bootstrap-datetimepicker.min
 //= require select/bootstrap-select.min
+//= require tag_list
 //
 
 
