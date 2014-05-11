@@ -1,11 +1,13 @@
 <%= content_for(:html_head) do %>
     <%= javascript_include_tag "cms/content_library" %>
-
+    <%= javascript_include_tag "cms/content_gallery" %>
 <% end %>
 
 <% page_title "Content Library / List #{content_type.display_name_plural}" %>
 <% @toolbar_title = "List #{content_type.display_name_plural}" %>
 <%= render :partial => 'cms/blocks/toolbar' %>
+
+<div id="image_gallery"></div>
 
 <table id="blocks" class="data table table-condensed table-hover"
        data-content_type="<%= content_type.content_block_type %>"

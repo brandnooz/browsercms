@@ -18,7 +18,7 @@
   <body>
     <div class="container">
     	<% flash_class, flash_message = flash.to_a.first %>
-      <% if flash_message %><p><%= flash_message %></p><% end %>
+      <% if flash_message %><p class="alert alert-<%= flash_class %>"><%= flash_message %></p><% end %>
     	<%= yield %>
     </div>
     <%= render :partial => "layouts/cms/footer" %>
