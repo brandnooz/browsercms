@@ -42,6 +42,23 @@ module Cms
       "ERROR: #{e.message}"
     end
 
+    def render_connectable_with_editbox(content_block) 
+      
+      if logged_in? && current_user.able_to_edit?(@page)
+        content_tag :div, :class => 'cms-connectable', :data => {
+          :id => content_block.id, 
+          :type => content_block.class.table_name, 
+          :name => content_block.name,
+          :status => content_block.status,
+          :edit_path => edit_cms_connectable_path( content_block )} do
+          render_connectable( content_block )
+        end
+      else
+        render_connectable( content_block )
+      end      
+    end
+
+
     ##
     # Renders the toolbar for the CMS. All page templates need to include this or they won't be editable.
     # Typically rendered as an iframe to avoid CSS/JS conflicts.

@@ -1,0 +1,12 @@
+$(document).ready(function() { 
+  $('.cms-connectable').each(function() {
+    var el = $(this);
+    var edit_icon = "<%= asset_path("cms/pages/edit_connectable.gif") %>";
+    if (el.data('status') == 'published')
+      var status_icon = "<%= asset_path("cms/icons/status/published.gif") %>";
+    else
+      var status_icon = "<%= asset_path("cms/icons/status/draft.gif") %>";
+
+    el.append( "<div class='cms-connectable-links'><a href='"+ el.data('editPath') +"'><img src='"+ edit_icon +"' title='Edit: "+ el.data('name') +"' /></a><img src='"+ status_icon +"' /></div>" );
+  });
+});
