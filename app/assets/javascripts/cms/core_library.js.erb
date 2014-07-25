@@ -1,8 +1,9 @@
 function cms_init_plugins() {
     // Date time picker
-    $('.datetimepicker').datetimepicker();
-
-    $('.selectpicker').selectpicker();
+    try{
+        $('.datetimepicker').datetimepicker();
+        $('.selectpicker').selectpicker();
+    } catch(err) {}
 }
 
 //

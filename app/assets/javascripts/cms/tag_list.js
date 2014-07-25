@@ -37,6 +37,7 @@
     });      
 
     $('.tag-label-list .label').click(function() {
+      console.log('you clocked a tag');
       var tag_ob = $(this);
 
       // add tag
