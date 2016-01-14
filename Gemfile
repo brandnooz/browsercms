@@ -11,6 +11,9 @@ gem 'bluecloth', :groups=>[:development, :test] # For YARD
 
 gem "thin" # To avoid annoying Ruby 1.9.3/Rails/Webrick warnings - See http://stackoverflow.com/questions/7082364/what-does-warn-could-not-determine-content-length-of-response-body-mean-and-h
 
+gem 'jquery-tablesorter'
+gem 'highcharts-rails'
+
 # For testing behavior in production
 group :production do
   gem 'uglifier'
@@ -29,6 +32,6 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'cucumber'
   gem 'launchy'
-  gem 'ruby-prof'
+  gem 'ruby-prof', '~> 0.15'
   gem 'aruba'
 end

@@ -11,6 +11,9 @@
 //= require datetimepicker/bootstrap-datetimepicker.min
 //= require select/bootstrap-select.min
 //= require tag_list
+//= require jquery-tablesorter
+//= require highcharts
+//= require highcharts/highcharts-more
 //
 
 
