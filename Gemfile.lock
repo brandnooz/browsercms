@@ -4,7 +4,9 @@ PATH
     browsercms (3.5.7)
       ancestry (~> 1.2.4)
       ckeditor_rails (~> 3.6.4)
+      highcharts-rails (~> 4.1.9)
       jquery-rails
+      jquery-tablesorter (~> 1.20.1)
       paperclip (~> 3.4.2)
       rails (>= 3.2.5, < 3.3.0)
       sass-rails (~> 3.2.6)

@@ -36,6 +36,8 @@ Gem::Specification.new do |s|
   s.add_dependency "ckeditor_rails", "~> 3.6.4"
   s.add_dependency "jquery-rails" #, "~> 2.0"
   s.add_dependency("paperclip", "~> 3.4.2")
+  s.add_dependency "highcharts-rails", '~> 4.1.9'
+  s.add_dependency "jquery-tablesorter", '~> 1.20.1'
 
   # Required only for bcms-upgrade
   s.add_dependency "term-ansicolor"
