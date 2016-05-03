@@ -8,6 +8,7 @@
 //= require jquery.cookie
 //= require cms/core_library
 //= require cms/attachment_manager
+//= require cms/toolbar
 //= require datetimepicker/bootstrap-datetimepicker.min
 //= require select/bootstrap-select.min
 //= require tag_list
