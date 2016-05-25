@@ -31,7 +31,8 @@ module Cms
     end
 
     def path
-      file.url
+      #file.url
+      file.data_file_path
     end
 
     def self.publishable?
