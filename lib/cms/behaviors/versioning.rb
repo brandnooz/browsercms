@@ -289,7 +289,7 @@ module Cms
         end
 
         def as_of_draft_version
-          draft.build_object_from_version
+          draft.build_object_from_version if draft.present?
         end
 
         # Find a Content Block as of a specific version.

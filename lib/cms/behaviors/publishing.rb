@@ -144,7 +144,9 @@ module Cms
             if (respond_to?(:latest_version) && self.latest_version)
               version == latest_version && published?
             else
-              live_version.version == draft.version && published?
+              if live_version.present? && draft.present?
+                live_version.version == draft.version && published?
+              end
             end
           else
             true
