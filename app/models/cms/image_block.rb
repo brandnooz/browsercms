@@ -10,6 +10,10 @@ module Cms
     def self.display_name
       "Image"
     end
+    
+    def default_order
+      'updated_at desc'
+    end
 
     def image
       file
