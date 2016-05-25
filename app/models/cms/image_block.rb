@@ -11,7 +11,7 @@ module Cms
       "Image"
     end
     
-    def default_order
+    def self.default_order
       'updated_at desc'
     end
 
