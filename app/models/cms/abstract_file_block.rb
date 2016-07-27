@@ -14,7 +14,7 @@ module Cms
 
     def self.columns_for_index
      [{:label => "Name", :method => :name, :order => "name"},
-      {:label => "Path", :method => :path, :order => "url"},
+      {:label => "Path", :method => :data_path, :order => "url"},
       {:label => "Size", :method => :file_size, :order => "file_size"},
       {:label => "Updated On", :method => :updated_on_string, :order => "updated_at"}]
     end    
@@ -31,6 +31,10 @@ module Cms
     end
 
     def path
+      file.data_file_path
+    end
+    
+    def data_path
       file.data_file_path
     end
 
