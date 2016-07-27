@@ -3,7 +3,7 @@ module Cms
 
     acts_as_content_block :taggable => true #, :searchable => {:searchable_columns => ['cms_attachments.data_file_path', :name]}
 
-    has_attachment :file, :styles => {:thumb => "80x80"}
+    has_attachment :file, :styles => {:thumb => "80x80"}, :s3_protocol => :https, :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 1.year.from_now.httpdate }
     validates_attachment_presence :file, :message => "You must upload a file"
 
 
