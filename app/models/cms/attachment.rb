@@ -104,7 +104,9 @@ module Cms
                           :whiny => configuration.whiny,
                           :storage => rail_config(:storage),
                           :s3_credentials => rail_config(:s3_credentials),
-                          :bucket => rail_config(:s3_bucket)
+                          :bucket => rail_config(:s3_bucket),
+                          :s3_protocol => :https,
+                          :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 1.year.from_now.httpdate }
 
       end
 
