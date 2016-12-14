@@ -38,7 +38,7 @@ module Cms
     # Designed to allow 'typical' Paperclip configuration to be specified per attachment.
     class Configuration
       attr_accessor :url, :path, :styles, :processors, :default_url, :default_style, :storage, :whiny
-      attr_accessor :s3_credentials, :bucket, :s3_alias_url
+      attr_accessor :s3_credentials, :bucket, :s3_host_alias
       attr_accessor :file_permissions
 
       attr_reader :use_timestamp

@@ -89,7 +89,7 @@ module Cms
         # @todo This might be better done using subclasses of Attachment for each document instance.
         # We could use single table inheritance to avoid needing to do meta configurations.
         has_attached_file :data,
-                          :s3_alias_url => configuration.s3_alias_url,
+                          :s3_host_alias => configuration.s3_host_alias,
                           :url => configuration.url,
                           :path => configuration.path,
                           :styles => dynamically_return_styles,
